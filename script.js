@@ -6,21 +6,21 @@ const newQuoteBtn = document.getElementById("new-quote");
 const loader = document.getElementById("loader");
 
 // Show Loading
-function loading() {
+const loading = () => {
   loader.hidden = false;
   quoteContainer.hidden = true;
-}
+};
 
 // Hide Loading
-function complete() {
+const complete = () => {
   if (!loader.hiddent) {
     quoteContainer.hidden = false;
     loader.hidden = true;
   }
-}
+};
 
 // get quote from API
-async function getQuote() {
+const getQuote = async () => {
   loading();
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
   const apiUrl =
@@ -46,14 +46,14 @@ async function getQuote() {
   } catch (err) {
     getQuote();
   }
-}
+};
 // Tweet Quote
-function tweetQuote() {
+const tweetQuote = () => {
   const quote = quoteText.innerText;
   const author = authorText.innerText;
   const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
   window.open(twitterUrl, "_blank");
-}
+};
 
 // Event listeners
 newQuoteBtn.addEventListener("click", getQuote);
